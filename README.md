@@ -1,4 +1,4 @@
-Customer Segmentation using RFM Analysis
+Customer Segmentation using RFM Analysis 
 Overview
 
 This project performs Customer Segmentation using RFM (Recency, Frequency, Monetary) Analysis on a real-world e-commerce dataset.
