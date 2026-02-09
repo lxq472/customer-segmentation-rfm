@@ -82,20 +82,6 @@ Interactive dashboard includes:
 
 ---
 
-## 📁 Project Structure
-
-customer-segmentation-rfm/
-│
-├── rfm_dashboard.twbx
-├── rfm_segments.csv
-├── rfm_segmentation.ipynb
-├── Online Retail.xlsx
-└── README.md
-
-
-
----
-
 ## 💡 Business Value
 
 - Customer Retention Strategy  
