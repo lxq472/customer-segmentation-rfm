@@ -89,3 +89,150 @@ Interactive dashboard includes:
 - Marketing Targeting  
 - Revenue Optimization  
 - CLV Growth  
+
+---
+
+End-to-End Data Pipeline Architecture
+
+This project follows a complete analytics pipeline from raw transactional data to business intelligence dashboard.
+
+
+Raw Data (Excel / Transactions)
+        │
+        ▼
+Data Cleaning & Validation (Python / Pandas)
+- Remove null CustomerID
+- Remove cancellations / negative quantity
+- Handle missing values
+        │
+        ▼
+Feature Engineering
+- Revenue calculation
+- Invoice Month extraction
+- Cohort Month
+- RFM Metrics (Recency, Frequency, Monetary)
+        │
+        ▼
+Customer Segmentation Logic
+- RFM Scoring
+- Segment mapping (Champions, Loyal, At Risk, Hibernating)
+        │
+        ▼
+Analytics Data Mart (CSV outputs)
+- cohort_retention.csv
+- revenue_retention.csv
+- rfm_segments.csv
+        │
+        ▼
+Business Intelligence Layer (Tableau)
+- Cohort Retention Heatmap
+- Revenue Retention
+- Customer Segments Dashboard
+- Revenue & Behavior Analysis
+
+---
+
+Data Engineering / SQL Equivalent (Production Style)
+
+Although this project was implemented in Python, below is how the same transformation would typically run in a data warehouse (Snowflake / BigQuery / SQL Server).
+
+
+RFM Metrics (SQL)
+
+SELECT
+    CustomerID,
+    DATEDIFF(day, MAX(InvoiceDate), '2011-12-31') AS Recency,
+    COUNT(DISTINCT InvoiceNo) AS Frequency,
+    SUM(Quantity * UnitPrice) AS Monetary
+FROM transactions
+WHERE Quantity > 0
+  AND CustomerID IS NOT NULL
+GROUP BY CustomerID;
+
+---
+
+Cohort Assignment (SQL)
+
+SELECT
+    CustomerID,
+    MIN(DATE_TRUNC('month', InvoiceDate)) AS CohortMonth
+FROM transactions
+GROUP BY CustomerID;
+
+---
+
+Retention Matrix (SQL logic concept)
+
+SELECT
+    CohortMonth,
+    InvoiceMonth,
+    COUNT(DISTINCT CustomerID) AS ActiveCustomers
+FROM cohort_table
+GROUP BY CohortMonth, InvoiceMonth;
+
+---
+
+Business Intelligence Layer
+
+The Tableau dashboard transforms analytics into decision-making insights.
+
+Key Business Questions Answered
+
+Which customer cohorts retain best over time?
+
+How fast do customers churn after first purchase?
+
+Which segments generate most revenue?
+
+Where should marketing focus: retention vs acquisition?
+
+Which customers are at churn risk?
+
+Business Insights
+Customer Retention
+
+Early cohorts show strong long-term retention
+
+Newer cohorts drop faster → possible acquisition quality issue
+
+Revenue Behavior
+
+Revenue retention remains stronger than user retention → high-value repeat buyers
+
+Some cohorts increase value over time (customer maturation)
+
+Customer Segmentation
+
+Champions & Loyal Customers drive majority of revenue
+
+Large Hibernating segment = reactivation opportunity
+
+At Risk segment → churn prevention target
+
+Business Impact
+
+This analysis enables:
+
+Targeted retention campaigns
+
+High-value customer prioritization
+
+Churn prediction strategy
+
+Customer Lifetime Value optimization
+
+Marketing ROI improvement
+
+Tech Stack
+
+Python (Pandas, NumPy, Matplotlib, Seaborn)
+
+Cohort & Retention Analysis
+
+RFM Segmentation
+
+Tableau Dashboard
+
+Data Pipeline Design
+
+SQL (Analytical equivalent)
