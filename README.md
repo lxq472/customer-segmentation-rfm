@@ -1,144 +1,72 @@
-# 📊 Customer Segmentation using RFM Analysis
-
-## 🧠 Project Overview
-This project performs **Customer Segmentation using RFM (Recency, Frequency, Monetary) Analysis** on a real-world e-commerce dataset (~397K transactions).
-
-The goal is to:
-- Identify high-value customers
-- Detect churn risk segments
-- Improve retention strategy
-- Optimize Customer Lifetime Value (CLV)
-
-The project combines **Python analytics + Tableau BI dashboard** for full business insight.
+# 📊 Customer Segmentation & Cohort Retention Analytics  
+**End-to-End Data Analytics Project | Python · SQL · Tableau · BI**
 
 ---
 
-## 💼 Business Problem
+## 🧭 Executive Summary
+
+This project builds a complete **end-to-end analytics pipeline** to analyze **customer behavior, retention, and revenue performance** using a real-world UK e-commerce dataset.
+
+It identifies:
+
+- 💎 High-value customer segments  
+- ⚠️ Churn risk customers  
+- 📉 Retention & cohort behavior  
+- 💰 Revenue sustainability  
+
+All insights are delivered via an **interactive Tableau dashboard** for business decision-making.
+
+---
+
+## 🎯 Business Problem
+
 Companies often struggle to:
 
 - Identify their most valuable customers  
 - Detect churn early  
-- Optimize marketing & retention strategy  
+- Improve retention & marketing ROI  
 - Increase Customer Lifetime Value (CLV)  
+- Understand long-term cohort behavior  
 
-This project solves these challenges using **data-driven customer segmentation**.
-
----
-
-## 📦 Dataset
-**Online Retail Dataset (UK E-commerce)**
-
-- ~397K transactions  
-- 4K+ customers  
-- Period: Dec 2010 – Dec 2011  
+This project solves these challenges using **data-driven segmentation and retention analytics**.
 
 ---
 
-## ⚙️ Methodology
+## ⚙️ End-to-End Data Pipeline
 
-### 1. Data Cleaning
-- Removed cancellations & invalid transactions  
-- Handled missing Customer IDs  
-- Created Revenue metric  
+Raw Transactions → Data Cleaning → Feature Engineering → RFM Segmentation → Cohort Analytics → BI Dashboard
 
-### 2. RFM Calculation
-- **Recency** → Days since last purchase  
-- **Frequency** → Number of purchases  
-- **Monetary** → Total revenue per customer  
 
-### 3. Customer Segmentation
-Customers classified into:
+### 🔹 Data Preparation
+- Remove cancellations / negative quantity  
+- Remove missing CustomerID  
+- Clean revenue & timestamps  
 
-- 🏆 Champions  
-- 💎 Loyal Customers  
-- ⚠️ At Risk  
-- 😴 Hibernating  
-- 🔁 Returning Customers  
+### 🔹 Feature Engineering
+- Revenue calculation  
+- Invoice Month  
+- Cohort Month  
+- RFM Metrics  
 
-### 4. BI Dashboard (Tableau)
-Interactive dashboard includes:
+### 🔹 Analytics Layer
+- Customer Segmentation (RFM)  
+- Cohort Retention  
+- Revenue Retention  
 
-- Segment Distribution  
-- Revenue by Segment  
-- Recency vs Monetary Behavior  
+### 🔹 BI Layer
+- Tableau Dashboard  
+- Retention Heatmap  
+- Segment Analysis  
 
 ---
 
-## 📊 Key Insights
+## 🧠 SQL Equivalent (Production Thinking)
 
-- Champions & Loyal Customers generate **majority of revenue**
-- Large portion of customers are **Hibernating → churn risk**
-- Customers with **high Recency & low Frequency need re-engagement**
-- Revenue retention depends strongly on **repeat customers**
+Although implemented in Python, below shows **how this would run in a data warehouse**.
 
----
+### RFM Metrics
 
-## 🛠 Tools & Technologies
-
-- Python (Pandas, NumPy, Matplotlib, Seaborn)
-- Tableau Public (Dashboard & Visualization)
-- Jupyter / Google Colab
-- GitHub (Portfolio & Version Control)
-
----
-
-## 💡 Business Value
-
-- Customer Retention Strategy  
-- Churn Detection  
-- Marketing Targeting  
-- Revenue Optimization  
-- CLV Growth  
-
----
-
-End-to-End Data Pipeline Architecture
-
-This project follows a complete analytics pipeline from raw transactional data to business intelligence dashboard.
-
-
-Raw Data (Excel / Transactions)
-        │
-        ▼
-Data Cleaning & Validation (Python / Pandas)
-- Remove null CustomerID
-- Remove cancellations / negative quantity
-- Handle missing values
-        │
-        ▼
-Feature Engineering
-- Revenue calculation
-- Invoice Month extraction
-- Cohort Month
-- RFM Metrics (Recency, Frequency, Monetary)
-        │
-        ▼
-Customer Segmentation Logic
-- RFM Scoring
-- Segment mapping (Champions, Loyal, At Risk, Hibernating)
-        │
-        ▼
-Analytics Data Mart (CSV outputs)
-- cohort_retention.csv
-- revenue_retention.csv
-- rfm_segments.csv
-        │
-        ▼
-Business Intelligence Layer (Tableau)
-- Cohort Retention Heatmap
-- Revenue Retention
-- Customer Segments Dashboard
-- Revenue & Behavior Analysis
-
----
-
-Data Engineering / SQL Equivalent (Production Style)
-
-Although this project was implemented in Python, below is how the same transformation would typically run in a data warehouse (Snowflake / BigQuery / SQL Server).
-
-
-RFM Metrics (SQL)
-
+```sql
 SELECT
     CustomerID,
     DATEDIFF(day, MAX(InvoiceDate), '2011-12-31') AS Recency,
@@ -149,9 +77,9 @@ WHERE Quantity > 0
   AND CustomerID IS NOT NULL
 GROUP BY CustomerID;
 
----
 
-Cohort Assignment (SQL)
+
+Cohort Assignment
 
 SELECT
     CustomerID,
@@ -159,71 +87,67 @@ SELECT
 FROM transactions
 GROUP BY CustomerID;
 
----
 
-Retention Matrix (SQL logic concept)
+📊 Business Intelligence (Tableau)
 
-SELECT
-    CohortMonth,
-    InvoiceMonth,
-    COUNT(DISTINCT CustomerID) AS ActiveCustomers
-FROM cohort_table
-GROUP BY CohortMonth, InvoiceMonth;
+The dashboard answers key business questions:
 
----
+Which cohorts retain customers best?
 
-Business Intelligence Layer
-
-The Tableau dashboard transforms analytics into decision-making insights.
-
-Key Business Questions Answered
-
-Which customer cohorts retain best over time?
-
-How fast do customers churn after first purchase?
+How fast do customers churn?
 
 Which segments generate most revenue?
 
-Where should marketing focus: retention vs acquisition?
+Where should marketing focus?
 
-Which customers are at churn risk?
+Which customers are at risk?
 
-Business Insights
-Customer Retention
+🔎 Key Insights
+👥 Customer Retention
 
-Early cohorts show strong long-term retention
+Early cohorts show stronger long-term retention
 
 Newer cohorts drop faster → possible acquisition quality issue
 
-Revenue Behavior
+💰 Revenue Behavior
 
-Revenue retention remains stronger than user retention → high-value repeat buyers
+Revenue retention stronger than customer retention
 
-Some cohorts increase value over time (customer maturation)
+Some cohorts increase value over time
 
-Customer Segmentation
+🧩 Customer Segmentation
 
-Champions & Loyal Customers drive majority of revenue
+Champions & Loyal Customers drive most revenue
 
 Large Hibernating segment = reactivation opportunity
 
-At Risk segment → churn prevention target
+At Risk segment requires churn prevention
 
-Business Impact
+🚀 Business Impact
 
 This analysis enables:
 
 Targeted retention campaigns
 
-High-value customer prioritization
+Churn prevention strategy
 
-Churn prediction strategy
+Marketing optimization
 
-Customer Lifetime Value optimization
+CLV improvement
 
-Marketing ROI improvement
+Revenue growth insights
 
-Tech Stack
+🗂 Dataset
+
+Online Retail Dataset (UK E-commerce)
+
+~397K transactions
+
+4K+ customers
+
+Period: Dec 2010 – Dec 2011
+
+🛠 Tech Stack
 
 Python (Pandas, NumPy, Matplotlib, Seaborn)
 
@@ -233,6 +157,6 @@ RFM Segmentation
 
 Tableau Dashboard
 
-Data Pipeline Design
-
 SQL (Analytical equivalent)
+
+Data Pipeline Design
