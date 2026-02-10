@@ -85,7 +85,7 @@ SELECT
     MIN(DATE_TRUNC('month', InvoiceDate)) AS CohortMonth
 FROM transactions
 GROUP BY CustomerID;
-
+```
 ---
 
 📊 Business Intelligence (Tableau)
