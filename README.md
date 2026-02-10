@@ -78,7 +78,6 @@ WHERE Quantity > 0
 GROUP BY CustomerID;
 
 
-
 Cohort Assignment
 
 SELECT
@@ -87,6 +86,7 @@ SELECT
 FROM transactions
 GROUP BY CustomerID;
 
+---
 
 📊 Business Intelligence (Tableau)
 The dashboard answers key business questions:
