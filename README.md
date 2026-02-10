@@ -146,3 +146,8 @@ This analysis enables:
 - Tableau Dashboard (Business Intelligence)
 - SQL (Analytical equivalent)
 - Data Pipeline Design
+
+---
+
+👉 **Live Dashboard:**  
+https://public.tableau.com/app/profile/nikolaos.giannoulis/viz/CustomerSegmentationRFMAnalysis_17706751270790/CustomerSegmentationandValueAnalysisRFM
