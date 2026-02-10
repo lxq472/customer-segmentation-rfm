@@ -89,74 +89,51 @@ GROUP BY CustomerID;
 
 
 📊 Business Intelligence (Tableau)
-
 The dashboard answers key business questions:
-
 Which cohorts retain customers best?
-
 How fast do customers churn?
-
 Which segments generate most revenue?
-
 Where should marketing focus?
-
 Which customers are at risk?
+
 
 🔎 Key Insights
 👥 Customer Retention
-
 Early cohorts show stronger long-term retention
-
 Newer cohorts drop faster → possible acquisition quality issue
 
+
 💰 Revenue Behavior
-
 Revenue retention stronger than customer retention
-
 Some cohorts increase value over time
 
+
 🧩 Customer Segmentation
-
 Champions & Loyal Customers drive most revenue
-
 Large Hibernating segment = reactivation opportunity
-
 At Risk segment requires churn prevention
 
+
 🚀 Business Impact
-
 This analysis enables:
-
 Targeted retention campaigns
-
 Churn prevention strategy
-
 Marketing optimization
-
 CLV improvement
-
 Revenue growth insights
 
+
 🗂 Dataset
-
 Online Retail Dataset (UK E-commerce)
-
 ~397K transactions
-
 4K+ customers
-
 Period: Dec 2010 – Dec 2011
 
+
 🛠 Tech Stack
-
 Python (Pandas, NumPy, Matplotlib, Seaborn)
-
 Cohort & Retention Analysis
-
 RFM Segmentation
-
 Tableau Dashboard
-
 SQL (Analytical equivalent)
-
 Data Pipeline Design
