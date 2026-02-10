@@ -88,7 +88,7 @@ GROUP BY CustomerID;
 
 ---
 
-📊 Business Intelligence (Tableau)
+## 📊 Business Intelligence (Tableau)
 The dashboard answers key business questions:
 Which cohorts retain customers best?
 How fast do customers churn?
